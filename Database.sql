@@ -16,32 +16,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`test` /*!40100 DEFAULT CHARACTER SET ut
 
 USE `test`;
 
-/*Table structure for table `account` */
-
-DROP TABLE IF EXISTS `account`;
-
-CREATE TABLE `account` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `center_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `bank_id` int(11) NOT NULL,
-  `amount` decimal(10,0) NOT NULL,
-  `transaction_id` varchar(255) DEFAULT NULL,
-  `transaction_type` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `account` */
-
-insert  into `account`(`id`,`center_id`,`user_id`,`description`,`bank_id`,`amount`,`transaction_id`,`transaction_type`,`status`,`created_at`,`updated_at`) values 
-(1,14,2,'anyone',1,275,'raza33010','debit',1,'2023-06-17 19:41:57','2023-06-17 19:41:57'),
-(2,14,2,'anyone',1,275,'raza33010','credit',1,'2023-06-17 19:42:20','2023-06-17 19:42:20'),
-(5,14,2,'very good',2,340000,'abcd3020','debit',0,'2023-09-23 19:39:25','2023-09-23 19:39:25');
-
 /*Table structure for table `attendances` */
 
 DROP TABLE IF EXISTS `attendances`;
@@ -68,92 +42,9 @@ CREATE TABLE `attendances` (
   CONSTRAINT `attendances_ibfk_48` FOREIGN KEY (`center_id`) REFERENCES `center` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `attendances_ibfk_49` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `attendances_ibfk_50` FOREIGN KEY (`class_id`) REFERENCES `class` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `attendances` */
-
-insert  into `attendances`(`id`,`student_id`,`admin_id`,`user_id`,`center_id`,`subject_id`,`class_id`,`status`,`createdAt`,`updatedAt`) values 
-(1,8,NULL,2,1,1,1,1,'2024-05-31 19:50:41','2024-05-31 19:50:41'),
-(2,8,NULL,2,1,1,1,1,'2024-06-01 01:00:00','2024-06-01 01:00:00'),
-(3,18,2,NULL,1,NULL,2,1,'2024-06-03 18:52:17','2024-06-03 18:52:17'),
-(4,9,2,NULL,1,NULL,2,1,'2024-06-03 18:52:17','2024-06-03 18:52:17'),
-(5,21,2,NULL,1,NULL,2,1,'2024-06-03 18:52:17','2024-06-03 18:52:17'),
-(6,22,2,NULL,1,NULL,2,1,'2024-06-03 18:52:17','2024-06-03 18:52:17'),
-(7,19,2,NULL,1,NULL,2,1,'2024-06-03 18:52:17','2024-06-03 18:52:17'),
-(8,20,2,NULL,1,NULL,2,1,'2024-06-03 18:52:17','2024-06-03 18:52:17'),
-(9,10,2,NULL,1,NULL,3,1,'2024-06-03 18:52:48','2024-06-03 18:52:48'),
-(10,23,2,NULL,1,NULL,3,1,'2024-06-03 18:52:48','2024-06-03 18:52:48'),
-(11,24,2,NULL,1,NULL,3,1,'2024-06-03 18:52:48','2024-06-03 18:52:48'),
-(12,26,2,NULL,1,NULL,3,1,'2024-06-03 18:52:48','2024-06-03 18:52:48'),
-(13,25,2,NULL,1,NULL,3,1,'2024-06-03 18:52:48','2024-06-03 18:52:48'),
-(14,27,2,NULL,1,NULL,3,1,'2024-06-03 18:52:48','2024-06-03 18:52:48'),
-(15,11,2,NULL,1,NULL,4,1,'2024-06-03 19:24:00','2024-06-03 19:24:00'),
-(16,11,NULL,2,1,1,4,1,'2024-06-03 19:24:20','2024-06-03 19:24:20');
-
-/*Table structure for table `bank` */
-
-DROP TABLE IF EXISTS `bank`;
-
-CREATE TABLE `bank` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `center_id` int(11) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `balance` decimal(10,2) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `bank` */
-
-insert  into `bank`(`id`,`center_id`,`name`,`balance`,`status`,`created_at`,`updated_at`) values 
-(1,13,'ali hasnain',10500.00,1,'2023-06-27 11:32:04','2023-06-27 11:32:04'),
-(2,13,'ali hasnain',10000.00,1,'2023-06-27 11:32:11','2023-06-27 11:32:11');
-
-/*Table structure for table `batch` */
-
-DROP TABLE IF EXISTS `batch`;
-
-CREATE TABLE `batch` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `center_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 1,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `batch` */
-
-insert  into `batch`(`id`,`center_id`,`name`,`status`,`created_at`,`updated_at`) values 
-(1,2,'Pre_Medical',1,'2023-05-27 01:51:46','2023-11-05 20:58:39'),
-(4,14,'C-17',0,'2023-09-23 21:53:16','2023-09-23 21:53:16'),
-(5,3,'Computer',0,'2023-11-05 07:51:51','2023-11-05 07:51:51'),
-(6,3,'Pre_Engineering',1,'2023-11-05 07:55:40','2023-11-05 07:55:40'),
-(7,3,'Biology',1,'2023-11-05 15:58:52','2023-11-05 15:58:52');
-
-/*Table structure for table `cchapter` */
-
-DROP TABLE IF EXISTS `cchapter`;
-
-CREATE TABLE `cchapter` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `center_id` int(11) DEFAULT NULL,
-  `subject_id` int(11) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `cchapter` */
-
-insert  into `cchapter`(`id`,`center_id`,`subject_id`,`name`,`status`,`created_at`,`updated_at`) values 
-(1,13,1,'abbas',0,'2023-06-27 11:38:54','2023-06-27 11:38:54'),
-(2,13,1,'abbas',1,'2023-06-27 11:39:01','2023-06-27 11:39:01');
 
 /*Table structure for table `center` */
 
@@ -172,9 +63,9 @@ CREATE TABLE `center` (
 /*Data for the table `center` */
 
 insert  into `center`(`id`,`name`,`logo`,`status`,`address`,`phone_no`) values 
-(1,'Jinnah Campus','download (3).jpg',1,'Hasan Acadmey','01234567899'),
-(2,'Iqbal Campus','chap 11.png',1,'YCM','01234567899'),
-(3,'DL','chap 5.png',1,'HA Primary Camps','03011111545');
+(1,'Campus 1','download (3).jpg',1,'Hasan Acadmey','01234567899'),
+(2,'Campus 2','chap 11.png',1,'YCM','01234567899'),
+(3,'Campus 3','chap 5.png',1,'HA Primary Camps','03011111545');
 
 /*Table structure for table `class` */
 
@@ -205,171 +96,6 @@ insert  into `class`(`id`,`center_id`,`name`,`total_students`,`subjects_id`,`sta
 (15,3,'X',24,'2','1'),
 (16,3,'XI',24,'2','1'),
 (17,3,'XII',24,'2','1');
-
-/*Table structure for table `ctopic` */
-
-DROP TABLE IF EXISTS `ctopic`;
-
-CREATE TABLE `ctopic` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `center_id` int(11) DEFAULT NULL,
-  `course_id` int(11) DEFAULT NULL,
-  `unit_id` int(11) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `month` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `ctopic` */
-
-insert  into `ctopic`(`id`,`center_id`,`course_id`,`unit_id`,`name`,`month`,`description`,`status`,`created_at`,`updated_at`) values 
-(1,13,1,11,'m ali','jan','hi i am abbas raza',1,'2023-06-27 11:44:21','2023-06-27 11:44:21'),
-(2,13,1,11,'m ali','jan','hi i am abbas raza',0,'2023-06-27 11:44:29','2023-06-27 11:44:29');
-
-/*Table structure for table `duty` */
-
-DROP TABLE IF EXISTS `duty`;
-
-CREATE TABLE `duty` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `center_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `job` varchar(255) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `duty_time` varchar(225) DEFAULT NULL,
-  `assigned_by` varchar(255) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `duty` */
-
-insert  into `duty`(`id`,`center_id`,`user_id`,`job`,`date`,`duty_time`,`assigned_by`,`status`,`created_at`,`updated_at`) values 
-(1,13,4,'invagilatior','2023-06-22','14:30:00','hi i am abbas raza zaidi.....',0,'2023-06-27 18:29:07','2023-06-27 18:29:07'),
-(2,13,4,'invagilatior','2023-06-22','14:30:00','hi i am abbas raza zaidi.....',1,'2023-06-27 18:29:14','2023-06-27 18:29:14'),
-(4,14,2,'Invagilator','2023-08-07',NULL,'Abbas',1,'2023-09-24 15:02:21','2023-09-24 15:02:21'),
-(5,14,2,'Invagilator','2023-08-07',NULL,'Abbas',0,'2023-09-24 15:03:39','2023-09-24 15:03:39'),
-(6,13,2,'Invagilator','2023-08-18',NULL,'Abbas',1,'2023-09-24 15:05:48','2023-09-24 15:05:48');
-
-/*Table structure for table `examination` */
-
-DROP TABLE IF EXISTS `examination`;
-
-CREATE TABLE `examination` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `center_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  `type` varchar(255) DEFAULT NULL,
-  `month` varchar(255) NOT NULL,
-  `date` date DEFAULT NULL,
-  `total_marks` int(11) DEFAULT NULL,
-  `invigilator` varchar(255) DEFAULT NULL,
-  `schedule_start_time` varchar(225) DEFAULT NULL,
-  `schedule_end_time` varchar(255) DEFAULT NULL,
-  `start_time` varchar(255) DEFAULT NULL,
-  `end_time` varchar(255) DEFAULT NULL,
-  `checking_status` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `examination` */
-
-insert  into `examination`(`id`,`center_id`,`name`,`subject_id`,`type`,`month`,`date`,`total_marks`,`invigilator`,`schedule_start_time`,`schedule_end_time`,`start_time`,`end_time`,`checking_status`,`status`,`created_at`,`updated_at`) values 
-(1,11,'tel',2,'monthly','sep','2023-06-05',60,'abbas raza','21:30:00','22:30:00','21:45:00','23:45:00','done',1,'2023-06-17 07:52:12','2023-06-17 08:13:18'),
-(4,15,'DL',1,'Module','September','2023-08-07',75,'Abbas','21:30:00','23:30:00','21:00:00','23:00:00','Un done',1,'2023-09-26 15:50:55','2023-09-26 15:50:55');
-
-/*Table structure for table `notification_status` */
-
-DROP TABLE IF EXISTS `notification_status`;
-
-CREATE TABLE `notification_status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `center_id` int(11) DEFAULT NULL,
-  `notifications_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `seen_status` int(11) DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `notification_status` */
-
-/*Table structure for table `result` */
-
-DROP TABLE IF EXISTS `result`;
-
-CREATE TABLE `result` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `center_id` int(11) NOT NULL,
-  `exam_id` int(11) NOT NULL,
-  `student_id` int(11) NOT NULL,
-  `mark` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `result` */
-
-insert  into `result`(`id`,`center_id`,`exam_id`,`student_id`,`mark`,`status`,`created_at`,`updated_at`) values 
-(1,11,1,5,60,1,'2023-06-17 14:03:41','2023-06-17 14:03:41'),
-(2,11,1,5,75,1,'2023-06-17 14:06:09','2023-06-17 14:06:09'),
-(6,11,1,4,35,0,'2023-09-25 13:45:22','2023-09-25 13:45:22');
-
-/*Table structure for table `rscreen` */
-
-DROP TABLE IF EXISTS `rscreen`;
-
-CREATE TABLE `rscreen` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `center_id` int(11) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `rscreen` */
-
-insert  into `rscreen`(`id`,`center_id`,`name`,`status`,`created_at`,`updated_at`) values 
-(1,13,'abbas',1,'2023-06-27 11:20:11','2023-06-27 11:20:11'),
-(4,15,'aaon',1,'2023-09-25 19:59:20','2023-09-25 19:59:20');
-
-/*Table structure for table `srecord` */
-
-DROP TABLE IF EXISTS `srecord`;
-
-CREATE TABLE `srecord` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `center_id` int(11) NOT NULL,
-  `student_id` int(11) NOT NULL,
-  `file` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `status` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `srecord` */
-
-insert  into `srecord`(`id`,`center_id`,`student_id`,`file`,`description`,`date`,`status`,`created_at`,`updated_at`) values 
-(1,14,4,'download (3).jpg','anyone','2023-06-18',1,'2023-06-17 21:21:25','2023-06-17 21:21:25'),
-(4,15,4,'chemistry ppr key.pdf','very good','2023-08-07',0,'2023-09-25 19:29:45','2023-09-25 19:29:45');
 
 /*Table structure for table `student` */
 
