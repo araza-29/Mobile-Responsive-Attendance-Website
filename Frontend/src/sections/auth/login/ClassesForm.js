@@ -7,7 +7,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { API_URL } from '../../../env';
+=======
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
 
 // ----------------------------------------------------------------------
 
@@ -64,7 +67,11 @@ export default function LoginForm() {
     const userId = localStorage.getItem("UserId")
     const classId = classes
     // Perform API request using fetch
+<<<<<<< HEAD
     fetch(`${API_URL}/Attendance/getSubject`, {
+=======
+    fetch(`${process.env.REACT_APP_API_URL}/Attendance/getSubject`, {
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -92,7 +99,11 @@ export default function LoginForm() {
 
       const userId = localStorage.getItem("UserId");
       // Perform API request using fetch
+<<<<<<< HEAD
       fetch(`${API_URL}/Attendance/getClass`, {
+=======
+      fetch(`${process.env.REACT_APP_API_URL}/Attendance/getClass`, {
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

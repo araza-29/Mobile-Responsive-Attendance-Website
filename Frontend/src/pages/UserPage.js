@@ -4,6 +4,10 @@ import { sentenceCase } from 'change-case';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
 // @mui
 import {
   Card,
@@ -24,7 +28,10 @@ import {
   TablePagination,
 } from '@mui/material';
 import { setDate } from 'date-fns';
+<<<<<<< HEAD
 import { API_URL } from '../env';
+=======
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
 // components
 import Label from '../components/label';
 import Iconify from '../components/iconify';
@@ -99,7 +106,11 @@ useEffect(()=>{
     });
   const userId = localStorage.getItem("UserId");
   const res = c.map(item => (
+<<<<<<< HEAD
   fetch(`${API_URL}/Attendance/AdminMarkAttendance`,{
+=======
+  fetch(`${process.env.REACT_APP_API_URL}/Attendance/AdminMarkAttendance`,{
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
     method: 'POST',
     headers:{
       'Content-Type': 'application/json',
@@ -141,7 +152,11 @@ useEffect(()=>{
     });
     const userId = localStorage.getItem("UserId");
     const res = c.map(item => (
+<<<<<<< HEAD
     fetch(`${API_URL}/Attendance/MarkAttendance`,{
+=======
+    fetch(`${process.env.REACT_APP_API_URL}/Attendance/MarkAttendance`,{
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',
@@ -184,7 +199,11 @@ useEffect(()=>{
 
     console.log(classes,"classesss")
     console.log(subject,"subjectsss")
+<<<<<<< HEAD
     fetch(`${API_URL}/Attendance/getStudent/`, {
+=======
+    fetch(`${process.env.REACT_APP_API_URL}/Attendance/getStudent/`, {
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -288,7 +307,11 @@ useEffect(()=>{
     const source = localStorage.getItem("source");
     console.log("Admin",classes)
     if(source === "Admin") {
+<<<<<<< HEAD
       fetch(`${API_URL}/Attendance/getAttendanceDate`,{
+=======
+      fetch(`${process.env.REACT_APP_API_URL}/Attendance/getAttendanceDate`,{
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
         method: 'POST',
         headers:{
           'Content-Type': 'application/json',
@@ -305,7 +328,11 @@ useEffect(()=>{
       })
   }
     else if(source === "Teacher") {
+<<<<<<< HEAD
       fetch(`${API_URL}/Attendance/getAttendanceDate`,{
+=======
+      fetch(`${process.env.REACT_APP_API_URL}/Attendance/getAttendanceDate`,{
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
         method: 'POST',
         headers:{
           'Content-Type': 'application/json',

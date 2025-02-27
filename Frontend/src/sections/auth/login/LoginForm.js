@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 // @mui
 import { Stack, IconButton, InputAdornment, TextField} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+<<<<<<< HEAD
 import { API_URL } from '../../../env';
+=======
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
 // components
 import Iconify from '../../../components/iconify';
 // import tr from 'date-fns/locale/tr';
@@ -33,7 +36,11 @@ export default function LoginForm() {
     const source = localStorage.getItem('source')
     if(source === "Teacher") {
       const roleId = "4"
+<<<<<<< HEAD
     fetch(`${API_URL}/Attendance/login`, {
+=======
+    fetch(`${process.env.REACT_APP_API_URL}/Attendance/login`, {
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -88,7 +95,11 @@ export default function LoginForm() {
     }
     else if(source === "Admin") {
       const roleId = "1"
+<<<<<<< HEAD
       fetch(`${API_URL}/Attendance/login`, {
+=======
+      fetch(`${process.env.REACT_APP_API_URL}/Attendance/login`, {
+>>>>>>> c8b652e7ed2a725b8b37e0781561e025ec5e5a11
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
